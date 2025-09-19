@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://catycwhot17in"]
+
+[ext_resource type="Script" uid="uid://dngkym0sayu4i" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 16.0
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("collision_shape")]
+script = ExtResource("1_3vyb7")
+collision_shape = NodePath("CharacterBody2D/CollisionShape2D")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_g2els")
+
+[connection signal="input_event" from="CharacterBody2D" to="." method="_on_CharacterBody2d_input_event"]
