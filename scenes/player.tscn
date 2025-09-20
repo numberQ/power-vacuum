@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://catycwhot17in"]
+[gd_scene load_steps=3 format=3 uid="uid://xxrjw86p2nvc"]
 
 [ext_resource type="Script" uid="uid://dngkym0sayu4i" path="res://scenes/player.gd" id="1_3vyb7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vyb7"]
 radius = 16.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("collision_shape")]
-script = ExtResource("1_3vyb7")
-collision_shape = NodePath("CharacterBody2D/CollisionShape2D")
-body_color = Color(0.14370608, 0.37859076, 1, 1)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("collision_shape")]
 input_pickable = true
-motion_mode = 1
+gravity_scale = 0.0
+script = ExtResource("1_3vyb7")
+collision_shape = NodePath("CollisionShape2D")
+body_color = Color(0.07787504, 0.31561652, 1, 1)
+elasticity = 2.0
+friction = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CircleShape2D_g2els")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3vyb7")
 
-[connection signal="input_event" from="CharacterBody2D" to="." method="_on_CharacterBody2d_input_event"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
